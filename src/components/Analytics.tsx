@@ -104,6 +104,7 @@ export function Analytics({ products, loading, onNavigate }: { products: Product
                 initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.08, duration: 0.4 }}
                 style={{ display: 'flex', alignItems: 'center', gap: 14 }}
+                className="analytics-product-row"
               >
                 <span style={{ width: 24, fontSize: 'var(--t-small)', fontWeight: 700, color: 'var(--text-3)', fontVariantNumeric: 'tabular-nums' }}>{String(i + 1).padStart(2, '0')}</span>
                 {p.image_url && <img src={p.image_url} alt={p.name} style={{ width: 44, height: 44, borderRadius: 10, objectFit: 'cover', flexShrink: 0 }} />}
@@ -111,7 +112,7 @@ export function Analytics({ products, loading, onNavigate }: { products: Product
                   <div style={{ fontWeight: 600, fontSize: 'var(--t-small)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{p.name}</div>
                   <div style={{ fontSize: 'var(--t-tiny)', color: 'var(--text-3)', textTransform: 'capitalize' }}>{p.category} · {p.rating}★</div>
                 </div>
-                <div style={{ flex: 1, maxWidth: 280, margin: '0 16px' }}>
+                <div className="product-bar" style={{ flex: 1, maxWidth: 280, margin: '0 16px' }}>
                   <div style={{ height: 6, borderRadius: 999, background: 'rgba(255,255,255,0.06)', overflow: 'hidden' }}>
                     <motion.div
                       initial={{ width: 0 }} animate={{ width: `${(rev / maxRev) * 100}%` }}

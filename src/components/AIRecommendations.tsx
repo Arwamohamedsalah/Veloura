@@ -25,12 +25,12 @@ export function AIRecommendations({
   };
 
   return (
-    <div ref={ref} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-8)' }}>
+    <div ref={ref} className="page-stack" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-8)' }}>
       {/* AI Hero */}
       <AIHero stats={stats} loading={loading} />
 
       {/* Filter chips */}
-      <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', alignItems: 'center' }}>
+      <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', alignItems: 'center' }} className="chip-row">
         <span style={{ fontSize: 'var(--t-tiny)', color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.12em', marginRight: 4 }}>Category</span>
         {(['all', 'fashion', 'electronics', 'lifestyle'] as const).map((f) => (
           <button
@@ -88,7 +88,7 @@ function AIHero({ stats, loading }: { stats: { total: number; avgLift: number; a
   return (
     <div ref={ref} className="card" style={{ position: 'relative', overflow: 'hidden', border: '1px solid var(--line)' }}>
       <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(80% 120% at 0% 0%, rgba(16,185,129,0.18), transparent 55%), radial-gradient(80% 120% at 100% 100%, rgba(249,115,22,0.14), transparent 55%)' }} />
-      <div style={{ position: 'relative', padding: 'var(--s-12)', display: 'grid', gridTemplateColumns: 'minmax(0, 1.4fr) minmax(0, 1fr)', gap: 'var(--s-8)', alignItems: 'center' }} className="hero-grid">
+      <div style={{ position: 'relative', padding: 'var(--s-12)', display: 'grid', gridTemplateColumns: 'minmax(0, 1.4fr) minmax(0, 1fr)', gap: 'var(--s-8)', alignItems: 'center' }} className="hero-grid hero-grid-inner">
         <div>
           <motion.div
             initial={{ opacity: 0, y: 10 }} animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -114,7 +114,7 @@ function AIHero({ stats, loading }: { stats: { total: number; avgLift: number; a
           </motion.p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+        <div className="hero-stats" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
           {[
             { label: 'Active picks', value: loading ? '—' : String(stats.total), icon: Sparkles, color: 'var(--emerald-400)' },
             { label: 'Avg lift', value: loading ? '—' : `${stats.avgLift.toFixed(1)}%`, icon: TrendingUp, color: 'var(--orange-400)' },

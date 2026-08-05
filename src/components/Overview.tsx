@@ -33,12 +33,12 @@ export function Overview({
   ];
 
   return (
-    <div ref={ref} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-8)' }}>
+    <div ref={ref} className="page-stack" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--s-8)' }}>
       {/* Hero band */}
       <HeroBand orders={orders} totalRevenue={totalRevenue} recommendations={recommendations} loading={loading} onNavigate={onNavigate} />
 
       {/* KPI grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 'var(--s-5)' }}>
+      <div className="kpi-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 'var(--s-5)' }}>
         {kpis.map((k, i) => (
           <KpiCard key={k.label} kpi={k} index={i} loading={loading} />
         ))}
@@ -169,7 +169,7 @@ function HeroBand({ orders, totalRevenue, recommendations, loading, onNavigate }
       <div style={{ position: 'absolute', top: -80, right: -40, width: 320, height: 320, borderRadius: '50%', background: 'radial-gradient(circle, rgba(16,185,129,0.22), transparent 70%)', filter: 'blur(40px)', animation: 'float-slow 14s ease-in-out infinite' }} />
       <div style={{ position: 'absolute', bottom: -120, left: 20, width: 280, height: 280, borderRadius: '50%', background: 'radial-gradient(circle, rgba(249,115,22,0.18), transparent 70%)', filter: 'blur(40px)', animation: 'float-rev 16s ease-in-out infinite' }} />
 
-      <div style={{ position: 'relative', padding: 'var(--s-12)', display: 'grid', gridTemplateColumns: 'minmax(0, 1.3fr) minmax(0, 1fr)', gap: 'var(--s-8)', alignItems: 'center' }} className="hero-grid">
+      <div style={{ position: 'relative', padding: 'var(--s-12)', display: 'grid', gridTemplateColumns: 'minmax(0, 1.3fr) minmax(0, 1fr)', gap: 'var(--s-8)', alignItems: 'center' }} className="hero-grid hero-grid-inner">
         <div>
           <motion.div
             initial={{ opacity: 0, y: 10 }} animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -197,6 +197,7 @@ function HeroBand({ orders, totalRevenue, recommendations, loading, onNavigate }
             initial={{ opacity: 0, y: 14 }} animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.24 }}
             style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}
+            className="hero-actions"
           >
             <button className="btn btn-primary" onClick={() => onNavigate('ai')}><Sparkles size={16} /> Review AI picks</button>
             <button className="btn btn-ghost" onClick={() => onNavigate('analytics')}>View report <ArrowUpRight size={16} /></button>
@@ -204,7 +205,7 @@ function HeroBand({ orders, totalRevenue, recommendations, loading, onNavigate }
         </div>
 
         {/* Floating stat tiles */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14, position: 'relative' }}>
+        <div className="hero-stats" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14, position: 'relative' }}>
           {[
             { label: 'Today', value: formatCurrency(18420), sub: '+12% vs avg', color: 'var(--emerald-400)' },
             { label: 'Avg order', value: formatCurrency(loading ? 0 : totalRevenue / Math.max(1, orders.length)), sub: 'steady', color: 'var(--orange-400)' },

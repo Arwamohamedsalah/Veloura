@@ -198,6 +198,10 @@ export function Topbar({
         <kbd>⌘K</kbd>
       </button>
 
+      <button className="btn-icon-sm btn-ghost mobile-only topbar-search-btn" aria-label="Search" onClick={() => setCmdOpen(true)}>
+        <Search size={16} />
+      </button>
+
       <button className="btn-icon-sm btn-ghost hide-xs" aria-label="Filter orders" onClick={() => onNavigate('orders')}>
         <Filter size={16} />
       </button>

@@ -52,7 +52,7 @@ export default function App() {
 
       <Sidebar view={view} onNavigate={navigate} open={sidebarOpen} setOpen={setSidebarOpen} />
 
-      <div className="shell-main" style={{ paddingLeft: 'var(--sidebar-w)', position: 'relative', zIndex: 1 }}>
+      <div className="shell-main" style={{ paddingLeft: 'var(--sidebar-w)', position: 'relative', zIndex: 1, width: '100%', minWidth: 0, overflowX: 'hidden' }}>
         <Topbar
           title={meta.title}
           shortTitle={meta.shortTitle}
@@ -66,6 +66,7 @@ export default function App() {
           <AnimatePresence mode="wait">
             <motion.div
               key={view}
+              className="page-stack"
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}

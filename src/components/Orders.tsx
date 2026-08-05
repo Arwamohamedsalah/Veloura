@@ -93,7 +93,7 @@ export function Orders({
       </div>
 
       {/* Filter chips */}
-      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center' }}>
+      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center' }} className="chip-row">
         {FILTERS.map((f) => {
           const Icon = f.icon;
           const active = filter === f.id;
@@ -116,8 +116,8 @@ export function Orders({
       </div>
 
       {/* Toolbar */}
-      <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
-        <div className="glass" style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '0 14px', height: 40, borderRadius: 'var(--r-full)', border: '1px solid var(--line)', flex: '1 1 240px', minWidth: 200 }}>
+      <div className="toolbar-row" style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
+        <div className="toolbar-search glass" style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '0 14px', height: 40, borderRadius: 'var(--r-full)', border: '1px solid var(--line)', flex: '1 1 240px', minWidth: 200 }}>
           <Search size={16} color="var(--text-3)" />
           <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search by customer, order #, or city…" style={{ background: 'none', border: 'none', outline: 'none', color: 'var(--text)', fontSize: 'var(--t-small)', flex: 1, minWidth: 0 }} />
         </div>
@@ -137,7 +137,7 @@ export function Orders({
       {/* Table */}
       <div className="card" style={{ overflow: 'hidden' }}>
         <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 'var(--t-small)' }}>
+          <table className="data-table" style={{ width: '100%', borderCollapse: 'collapse', fontSize: 'var(--t-small)' }}>
             <thead>
               <tr style={{ borderBottom: '1px solid var(--line)' }}>
                 <Th label="Order" />

@@ -88,12 +88,12 @@ export function Inventory({
       </div>
 
       {/* Toolbar */}
-      <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
-        <div className="glass" style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '0 14px', height: 40, borderRadius: 'var(--r-full)', border: '1px solid var(--line)', flex: '1 1 220px', minWidth: 180 }}>
+      <div className="toolbar-row" style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
+        <div className="toolbar-search glass" style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '0 14px', height: 40, borderRadius: 'var(--r-full)', border: '1px solid var(--line)', flex: '1 1 220px', minWidth: 180 }}>
           <Search size={16} color="var(--text-3)" />
           <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search products…" style={{ background: 'none', border: 'none', outline: 'none', color: 'var(--text)', fontSize: 'var(--t-small)', flex: 1, minWidth: 0 }} />
         </div>
-        <div style={{ display: 'flex', gap: 8 }}>
+        <div className="chip-row" style={{ display: 'flex', gap: 8 }}>
           {(['all', 'fashion', 'electronics', 'lifestyle'] as CatFilter[]).map((f) => (
             <button key={f} onClick={() => setCat(f)} className="btn btn-sm" style={{
               background: cat === f ? 'rgba(16,185,129,0.15)' : 'rgba(255,255,255,0.04)',
@@ -122,7 +122,7 @@ export function Inventory({
 
       {/* Products */}
       {layout === 'grid' ? (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: 'var(--s-5)' }}>
+        <div className="product-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: 'var(--s-5)' }}>
           <AnimatePresence mode="popLayout">
             {loading
               ? [0,1,2,3,4,5].map(i => <div key={i} className="card" style={{ height: 360, borderRadius: 'var(--r-lg)' }}><div className="skeleton" style={{ height: '100%', borderRadius: 'var(--r-lg)' }} /></div>)

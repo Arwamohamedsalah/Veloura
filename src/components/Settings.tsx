@@ -60,7 +60,7 @@ export function Settings({
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: '220px minmax(0, 1fr)', gap: 'var(--s-6)' }} className="settings-grid">
-        <nav className="card reveal in" style={{ padding: 'var(--s-4)', alignSelf: 'start', position: 'sticky', top: 'calc(var(--topbar-h) + 16px)' }}>
+        <nav className="card reveal in settings-nav" style={{ padding: 'var(--s-4)', alignSelf: 'start', position: 'sticky', top: 'calc(var(--topbar-h) + 16px)' }}>
           {SECTIONS.map((s) => {
             const Icon = s.icon;
             const isActive = activeTab === s.id;
